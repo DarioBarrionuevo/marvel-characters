@@ -1,4 +1,4 @@
-"use client"; // Indicamos que este es un Client Component
+"use client";
 
 const notFound = () => {
   return <div>NOT FOUND</div>;

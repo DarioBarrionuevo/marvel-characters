@@ -1,4 +1,4 @@
-"use client"; // Indicamos que este es un Client Component
+"use client";
 
 const error = () => {
   return <div>error</div>;
