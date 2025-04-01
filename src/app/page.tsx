@@ -1,4 +1,4 @@
-import { fetchMarvelData } from "./api/request";
+import { fetchMarvelData } from "../api/request";
 
 export default async function Home() {
   try {
