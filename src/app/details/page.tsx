@@ -1,4 +1,3 @@
-
 const details = () => {
   return <div>DETAILS</div>;
 };

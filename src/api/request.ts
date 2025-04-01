@@ -27,7 +27,7 @@ export const fetchMarvelData = async (endpoint: string) => {
         apikey: publicKey,
         hash: hash,
         ts: timestamp,
-        limit:50
+        limit: 50,
       },
     });
 
