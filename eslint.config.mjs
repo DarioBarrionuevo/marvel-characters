@@ -53,7 +53,12 @@ export default defineConfig([
     },
 
     rules: {
-      "prettier/prettier": "error",
+      "prettier/prettier": [
+        "error",
+        {
+          endOfLine: "lf",
+        },
+      ],
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "off",
       "react/jsx-uses-vars": "error",
