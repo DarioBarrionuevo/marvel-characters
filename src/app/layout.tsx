@@ -25,7 +25,9 @@ export default function RootLayout({
       <body>
         <FavoritesProvider>
           <Header />
-          <main className="mt-20 mb-20">{children}</main>
+          <main style={{ marginTop: "80px", marginBottom: "80px" }}>
+            {children}
+          </main>
           <Footer />
         </FavoritesProvider>
       </body>

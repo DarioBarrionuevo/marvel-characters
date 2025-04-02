@@ -1,6 +1,6 @@
 "use client";
-import FavoriteEmpty from "@/app/components/icons/FavoriteEmpty";
-import FavoriteFull from "@/app/components/icons/FavoriteFull";
+import FavoriteEmpty from "@/components/icons/FavoriteEmpty";
+import FavoriteFull from "@/components/icons/FavoriteFull";
 import styled from "styled-components";
 import Link from "next/link";
 
