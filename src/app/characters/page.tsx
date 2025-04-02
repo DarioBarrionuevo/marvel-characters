@@ -13,16 +13,7 @@ function Characters() {
   const [total, setTotal] = useState<number>(0);
   const [characters, setCharacters] = useState<Character[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-
-  const getCharacters = async (characterName: string) => {
-    const data = await fetchMarvelData("/characters", characterName);
-    console.log("🚀 ~ getCharacters ~ data:", data)
-
-    return {
-      total: data.data?.total,
-      characters: data.data?.results,
-    };
-  };
+  const [isMounted, setIsMounted] = useState(false);
 
   const loadCharacters = async (nameStartsWith = "") => {
     setLoading(true);
@@ -35,10 +26,24 @@ function Characters() {
         setLoading(false);
       });
   };
+  const getCharacters = async (characterName: string) => {
+    const data = await fetchMarvelData("/characters", characterName);
+
+    return {
+      total: data.data?.total,
+      characters: data.data?.results,
+    };
+  };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     loadCharacters();
   }, []);
+
+  if (!isMounted) return null; // Renderiza solo en el cliente
 
   const handleSearch = (value: string) => {
     setCharacterName(value);
@@ -56,7 +61,7 @@ function Characters() {
       ) : (
         <StyledGrid>
           {characters?.map((character: Character) => (
-            <p key={character.id}>{character.name}</p>
+            <div key={character.id}>{character.name}</div>
           ))}
         </StyledGrid>
       )}
