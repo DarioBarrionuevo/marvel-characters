@@ -29,8 +29,8 @@ const Spinner = () => {
       <Image
         src="/shield.svg"
         alt="Captain America Shield"
-        width={100}
-        height={100}
+        width={80}
+        height={80}
         priority
       />
     </SpinnerContainer>
