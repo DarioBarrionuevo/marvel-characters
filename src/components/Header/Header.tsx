@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import MarvelLogo from "./MarvelLogo";
 import FavoritesIcon from "./FavoritesIcon";
+import { useEffect, useState } from "react";
 
 const HeaderWrapper = styled.header`
   background-color: var(--header-bg-color, black);
@@ -27,6 +28,13 @@ const HeaderComponent = styled.div`
 `;
 
 export default function Header() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null; // Renderiza solo en el cliente
   return (
     <HeaderWrapper>
       <HeaderComponent>

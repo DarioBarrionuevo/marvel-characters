@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const FooterWrapper = styled.footer`
@@ -20,6 +21,13 @@ const FooterWrapper = styled.footer`
 `;
 
 const Footer = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null; // Renderiza solo en el cliente
   return <FooterWrapper>Data provided by Marvel. © 2014 Marvel</FooterWrapper>;
 };
 
