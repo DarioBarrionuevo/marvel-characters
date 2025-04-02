@@ -9,11 +9,12 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+
 export const metadata: Metadata = {
   title: "Marvel Heroes",
   description: "Encuentra tus heroes preferidos",
-  icons: "/MarvelMiniIcon.svg",
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,9 +25,7 @@ export default function RootLayout({
       <body>
         <FavoritesProvider>
           <Header />
-          <main style={{ marginTop: "80px", marginBottom: "80px" }}>
-            {children}
-          </main>
+          <main className="mt-20 mb-20">{children}</main>
           <Footer />
         </FavoritesProvider>
       </body>
