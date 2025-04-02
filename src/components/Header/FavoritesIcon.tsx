@@ -3,8 +3,32 @@ import FavoriteEmpty from "@/components/icons/FavoriteEmpty";
 import FavoriteFull from "@/components/icons/FavoriteFull";
 import styled from "styled-components";
 import Link from "next/link";
+import { useFavorites } from "@/context/FavoritesContext";
 
-const StyledComponent = styled.div`
+const FavoritesIcon = () => {
+  const favoritesContext = useFavorites();
+  if (!favoritesContext) return null;
+
+  const { favorites } = favoritesContext;
+  const favoritesCount = favorites.length;
+
+  return (
+    <>
+      <Link href="/favorites" passHref aria-label="Ir a la página de favoritos">
+        {favoritesCount > 0 ? <FavoriteFull /> : <FavoriteEmpty />}
+      </Link>
+      {favoritesCount > 0 && (
+        <FavoritesCount aria-hidden={favoritesCount === 0}>
+          {favoritesCount}
+        </FavoritesCount>
+      )}
+    </>
+  );
+};
+
+export default FavoritesIcon;
+
+const FavoritesCount = styled.div`
   width: 8px;
   height: 19px;
 
@@ -21,18 +45,3 @@ const StyledComponent = styled.div`
   flex-grow: 0;
   cursor: default;
 `;
-
-const FavoritesIcon = () => {
-  const favoritesSelected = true;
-  const totalFavorites = 2;
-  return (
-    <>
-      <Link href="/favorites" passHref aria-label="Ir a la página de favoritos">
-        {favoritesSelected ? <FavoriteFull /> : <FavoriteEmpty />}
-      </Link>
-      <StyledComponent>{totalFavorites}</StyledComponent>
-    </>
-  );
-};
-
-export default FavoritesIcon;
