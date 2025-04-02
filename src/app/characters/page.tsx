@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import * as media from "../../theme/media-queries";
 import Spinner from "@/components/Spinner/Spinner";
+import CharacterDisplay from "@/components/Character/Character";
 
 function Characters() {
   const [characterName, setCharacterName] = useState<string>("");
@@ -61,7 +62,7 @@ function Characters() {
       ) : (
         <StyledGrid>
           {characters?.map((character: Character) => (
-            <div key={character.id}>{character.name}</div>
+            <CharacterDisplay key={character.id} character={character} />
           ))}
         </StyledGrid>
       )}
