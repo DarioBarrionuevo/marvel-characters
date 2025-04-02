@@ -15,7 +15,7 @@ const SearchBar: FC<PropTypes> = ({ value, count, onChange, ...props }) => {
     <Container {...props}>
       <SearchInput value={value} onChange={onChange} />
 
-      <StyledResultsCount level="p">
+      <StyledResultsCount level="p3">
         {count} {count === 1 ? "RESULT" : "RESULTS"}
       </StyledResultsCount>
     </Container>

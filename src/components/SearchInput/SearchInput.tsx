@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import Search from "../icons/Search";
 import styled from "styled-components";
 
@@ -10,8 +10,17 @@ export interface PropTypes {
 }
 
 export const SearchInput: FC<PropTypes> = ({ value, onChange, ...props }) => {
+  const [inputValue, setInputValue] = useState(value || "");
+
+  useEffect(() => {
+    if (value !== undefined && value !== inputValue) {
+      setInputValue(value || "");
+    }
+  }, [value]);
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange?.(event.target.value);
+    setInputValue(event.target.value);
   };
   return (
     <InputWrapper {...props}>

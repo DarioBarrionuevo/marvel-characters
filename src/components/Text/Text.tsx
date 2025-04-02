@@ -1,26 +1,27 @@
 "use client";
 
+import typography from "@/theme/typography";
 import { FC, PropsWithChildren } from "react";
 import styled from "styled-components";
 
-interface PropTypes {
-  level: "h1" | "h2" | "p" | "span";
+export interface PropTypes {
+  level: "h1" | "h2" | "p1" | "p2" | "p3";
 }
 
-const StyledText = styled.p<PropTypes>`
-  font-size: ${(props) =>
-    props.level === "h1" ? "2em" : props.level === "h2" ? "1.5em" : "1em"};
-  font-weight: ${(props) => (props.level === "h1" ? "bold" : "normal")};
-  text-transform: ${(props) => (props.level === "h2" ? "uppercase" : "none")};
+const StyledText = styled.p.withConfig({
+  shouldForwardProp: (prop) => !["level"].includes(prop),
+})<PropTypes>`
+  ${({ level }) => typography[level]};
 `;
-
 const Text: FC<PropsWithChildren<PropTypes>> = ({
-  level = "p",
+  level,
   children,
   ...props
 }) => {
+  const asTarget = ["h1", "h2"].includes(level) ? level : "p";
+
   return (
-    <StyledText level={level} {...props}>
+    <StyledText level={level} as={asTarget} {...props}>
       {children}
     </StyledText>
   );
