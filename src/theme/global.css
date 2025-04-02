@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import './colors.css';
+@import './spacing.css';
+
+:root {
+  font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} 
+
+ 
+
+
+
+html {
+  /**
+  * Font size 10px on default browser settings.
+  * It's used as 62.5% to adapt to changes in the browser's default font-size.
+  */
+  font-size: 62.5%;
+}
+
+
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
