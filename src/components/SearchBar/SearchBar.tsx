@@ -3,21 +3,31 @@ import { FC } from "react";
 import styled from "styled-components";
 import Text from "../Text/Text";
 import SearchInput from "../SearchInput/SearchInput";
+import Spinner from "../Spinner/Spinner";
 
 export interface PropTypes {
+  loading: boolean;
   value: string;
   onChange: (value: string) => void;
   count?: number;
 }
 
-const SearchBar: FC<PropTypes> = ({ value, count, onChange, ...props }) => {
+const SearchBar: FC<PropTypes> = ({
+  loading,
+  value,
+  count,
+  onChange,
+  ...props
+}) => {
   return (
     <Container {...props}>
       <SearchInput value={value} onChange={onChange} />
 
-      <StyledResultsCount level="p3">
-        {count} {count === 1 ? "RESULT" : "RESULTS"}
-      </StyledResultsCount>
+      {loading ? null : (
+        <StyledResultsCount level="p3">
+          {count} {count === 1 ? "RESULT" : "RESULTS"}
+        </StyledResultsCount>
+      )}
     </Container>
   );
 };

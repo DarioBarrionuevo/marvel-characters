@@ -53,7 +53,12 @@ function Characters() {
 
   return (
     <Container>
-      <SearchBar value={characterName} onChange={handleSearch} count={total} />
+      <SearchBar
+        loading={loading}
+        value={characterName}
+        onChange={handleSearch}
+        count={total}
+      />
 
       {loading ? (
         <SpinnerContainer>
