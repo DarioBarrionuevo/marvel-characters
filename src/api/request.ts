@@ -1,10 +1,11 @@
+"useclient";
 import axios from "axios";
 import md5 from "md5";
 
 // Aquí defino la URL base y las claves como variables de entorno
-const publicKey = process.env.PUBLIC_API_KEY;
-const privateKey = process.env.PRIVATE_API_KEY;
-const url = process.env.API_URL;
+const publicKey = process.env.NEXT_PUBLIC_PUBLIC_API_KEY;
+const privateKey = process.env.NEXT_PUBLIC_PRIVATE_API_KEY;
+const url = process.env.NEXT_PUBLIC_API_URL;
 
 // Controlamos que las claves estén definidas
 if (!publicKey || !privateKey) {
@@ -14,7 +15,10 @@ if (!publicKey || !privateKey) {
 }
 
 // Función que realiza la llamada a la API
-export const fetchMarvelData = async (endpoint: string) => {
+export const fetchMarvelData = async (
+  endpoint: string,
+  characterName: string
+) => {
   const timestamp = new Date().getTime();
   const hash = md5(timestamp + privateKey + publicKey);
 
@@ -28,6 +32,7 @@ export const fetchMarvelData = async (endpoint: string) => {
         hash: hash,
         ts: timestamp,
         limit: 50,
+        nameStartsWith: characterName || undefined,
       },
     });
 
