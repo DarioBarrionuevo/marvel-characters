@@ -1,9 +1,13 @@
-const FavoriteFull = () => {
+interface FavoriteEmptyProps {
+  width?: number;
+  height?: number;
+}
+const FavoriteFull = ({ width = 26, height = 25 }: FavoriteEmptyProps) => {
   return (
     <>
       <svg
-        width="24"
-        height="22"
+        width={width}
+        height={height}
         viewBox="0 0 24 22"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
