@@ -71,6 +71,7 @@ export default defineConfig([
 
     rules: {
       "@typescript-eslint/explicit-module-boundary-types": "off",
+      "react/prop-types": "off"
     },
   },
 ]);
