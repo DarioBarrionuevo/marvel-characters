@@ -1,7 +1,8 @@
 "use client";
-import FavoriteEmpty from "@/app/components/icons/favoriteEmpty";
-import FavoriteFull from "@/app/components/icons/favoriteFull";
+import FavoriteEmpty from "@/app/components/icons/FavoriteEmpty";
+import FavoriteFull from "@/app/components/icons/FavoriteFull";
 import styled from "styled-components";
+import Link from "next/link";
 
 const StyledComponent = styled.div`
   width: 8px;
@@ -18,6 +19,7 @@ const StyledComponent = styled.div`
   flex: none;
   order: 2;
   flex-grow: 0;
+  cursor: default;
 `;
 
 const FavoritesIcon = () => {
@@ -25,7 +27,9 @@ const FavoritesIcon = () => {
   const totalFavorites = 2;
   return (
     <>
-      {favoritesSelected ? <FavoriteFull /> : <FavoriteEmpty />}
+      <Link href="/favorites" passHref aria-label="Ir a la página de favoritos">
+        {favoritesSelected ? <FavoriteFull /> : <FavoriteEmpty />}
+      </Link>
       <StyledComponent>{totalFavorites}</StyledComponent>
     </>
   );
