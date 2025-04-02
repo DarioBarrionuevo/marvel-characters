@@ -1,18 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-@import './colors.css';
-@import './spacing.css';
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import "./colors.css";
+@import "./spacing.css";
 
 :root {
-  font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} 
-
- 
-
-
+}
 
 html {
   /**
@@ -21,8 +17,6 @@ html {
   */
   font-size: 62.5%;
 }
-
-
 
 body,
 h1,
