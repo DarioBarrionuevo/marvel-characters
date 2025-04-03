@@ -60,4 +60,4 @@ La estructura del proyecto está organizada en las siguientes carpetas:
 ## Despliegue
 
 La aplicación está desplegada en **Netlify**. Puedes acceder a la versión en producción desde el siguiente enlace:  
-[Marvel Characters App](#)
+[Marvel Characters App](https://marvel-characters-heroes.netlify.app)
