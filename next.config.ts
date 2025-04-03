@@ -1,15 +1,6 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  webpack(config, { isServer }) {
-    // Configuración para manejar archivos SVG como componentes React
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-
-    return config;
+module.exports = {
+  swcMinify: true, // Asegúrate de que SWC se use para minificación
+  experimental: {
+    swcLoader: true, // Habilita SWC para cargar fuentes
   },
 };
-
-export default nextConfig;

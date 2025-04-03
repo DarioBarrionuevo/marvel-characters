@@ -1,14 +1,14 @@
 "use client";
 import { FC, useCallback, useEffect, useState } from "react";
 import Text from "../Text/Text";
-import { Character } from "@/types/character";
+import { Character } from "../../types/character";
 import styled from "styled-components";
 import * as media from "../../theme/media-queries";
-import typographyStyles from "@/theme/typography";
+import typographyStyles from "../../theme/typography";
 import Button from "../Button/Button";
 import FavoriteEmpty from "../icons/FavoriteEmpty";
 import FavoriteFull from "../icons/FavoriteFull";
-import { useFavorites } from "@/context/FavoritesContext";
+import { useFavorites } from "../../context/FavoritesContext";
 
 export interface PropTypes {
   character: Character;
