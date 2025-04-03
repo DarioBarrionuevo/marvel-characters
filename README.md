@@ -53,6 +53,7 @@ La estructura del proyecto está organizada en las siguientes carpetas:
 - **axios**: Para realizar peticiones HTTP a la API de Marvel.  
 - **styled-components**: Para gestionar los estilos de los componentes.  
 - **vitest**: Para realizar pruebas unitarias y de integración.  
+- **md5**: Para hashear mensajes.  
 - **Eslint & Prettier**: Para el formato de código.  
 - **Jest & React Testing Library**: Para realizar los tests.  
 
