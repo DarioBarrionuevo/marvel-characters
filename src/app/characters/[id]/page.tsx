@@ -8,48 +8,47 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const CharacterPage = () => {
-  const { id }: number = useParams();
+  const { id } = useParams();
+  const characterId = Number(id);
   const [characterData, setCharacterData] = useState<Character>();
   const [comics, setComics] = useState<Comic[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const getCharacterData = async (characterId: number) => {
-    const data = await fetchMarvelData(`/characters/${characterId}`);
+  const getCharacterData = async (pCharacterId: number) => {
+    const data = await fetchMarvelData(`/characters/${pCharacterId}`);
     console.log("🚀 ~ getCharacterData ~ data:", data);
     return data?.data?.results[0];
   };
 
-  const getCharacterComics = async (characterId: number) => {
-    const data = await fetchMarvelData(`/characters/${characterId}/comics`);
+  const getCharacterComics = async (pCharacterId: number) => {
+    const data = await fetchMarvelData(`/characters/${pCharacterId}/comics`);
     return data?.data?.results;
   };
-  const loadCharacterData = async (characterId: number) => {
+  const loadCharacterData = async (pCharacterId: number) => {
     setLoading(true);
-    await getCharacterData(characterId).then((data) => {
+    await getCharacterData(pCharacterId).then((data) => {
       setCharacterData(data);
       setLoading(false);
     });
   };
 
-  const loadComics = async (characterId: number) => {
+  const loadComics = async (pCharacterId: number) => {
     setLoading(true);
-    await getCharacterComics(characterId).then((data: Comic[]) => {
+    await getCharacterComics(pCharacterId).then((data: Comic[]) => {
       setComics(data);
       setLoading(false);
     });
   };
 
   useEffect(() => {
-    loadCharacterData(id);
-    loadComics(id);
+    loadCharacterData(characterId);
+    loadComics(characterId);
   }, [id]);
   return (
     <Container>
       {!!characterData && !loading ? (
         <>
-        <p>id</p>
-          {/* <CharacterInfo character={characterData} /> */}
-          {/* // <ComicsList comics={comics} /> */}
+          <p>{id}</p>
         </>
       ) : (
         <SpinnerContainer>
