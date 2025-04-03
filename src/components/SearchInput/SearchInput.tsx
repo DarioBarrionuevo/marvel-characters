@@ -16,6 +16,7 @@ export const SearchInput: FC<PropTypes> = ({ value, onChange, ...props }) => {
     if (value !== undefined && value !== inputValue) {
       setInputValue(value || "");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

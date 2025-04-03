@@ -6,7 +6,7 @@ import Spinner from "@/components/Spinner/Spinner";
 import { Character } from "@/types/character";
 import { Comic } from "@/types/comic";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 
 const CharacterPage = () => {
@@ -17,30 +17,35 @@ const CharacterPage = () => {
   const [loading, setLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const getCharacterData = async (pCharacterId: number) => {
+  const getCharacterData = useCallback(async (pCharacterId: number) => {
     const data = await fetchMarvelData(`/characters/${pCharacterId}`);
     return data?.data?.results[0];
-  };
+  }, []);
 
-  const getCharacterComics = async (pCharacterId: number) => {
+  const getCharacterComics = useCallback(async (pCharacterId: number) => {
     const data = await fetchMarvelData(`/characters/${pCharacterId}/comics`);
     return data?.data?.results;
-  };
-  const loadCharacterData = async (pCharacterId: number) => {
-    setLoading(true);
-    await getCharacterData(pCharacterId).then((data) => {
+  }, []);
+
+  const loadCharacterData = useCallback(
+    async (pCharacterId: number) => {
+      setLoading(true);
+      const data = await getCharacterData(pCharacterId);
       setCharacterData(data);
       setLoading(false);
-    });
-  };
+    },
+    [getCharacterData]
+  );
 
-  const loadComics = async (pCharacterId: number) => {
-    setLoading(true);
-    await getCharacterComics(pCharacterId).then((data: Comic[]) => {
+  const loadComics = useCallback(
+    async (pCharacterId: number) => {
+      setLoading(true);
+      const data = await getCharacterComics(pCharacterId);
       setComics(data);
       setLoading(false);
-    });
-  };
+    },
+    [getCharacterComics]
+  );
 
   useEffect(() => {
     setIsMounted(true);
@@ -49,7 +54,7 @@ const CharacterPage = () => {
   useEffect(() => {
     loadCharacterData(characterId);
     loadComics(characterId);
-  }, [id]);
+  }, [characterId, loadCharacterData, loadComics]);
 
   if (!isMounted) return null; // Renderiza solo en el cliente
 

@@ -3,7 +3,6 @@ import { FC } from "react";
 import styled from "styled-components";
 import Text from "../Text/Text";
 import SearchInput from "../SearchInput/SearchInput";
-import Spinner from "../Spinner/Spinner";
 
 export interface PropTypes {
   loading: boolean;

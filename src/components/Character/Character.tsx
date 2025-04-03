@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 import Text from "../Text/Text";
 import Link from "next/link";
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { Character } from "@/types/character";
 import { useFavorites } from "@/context/FavoritesContext";
 import FavoriteEmpty from "../icons/FavoriteEmpty";
@@ -24,11 +24,11 @@ const CharacterDisplay: FC<PropTypes> = ({ character }) => {
 
   const { favorites, addFavorite, removeFavorite } = favoritesContext;
 
-  const checkCharacterIsFavorite = () => {
+  const checkCharacterIsFavorite = useCallback(() => {
     setIsFavorite(
       favorites.some((favCharacter) => favCharacter.id === character.id)
     );
-  };
+  }, [favorites, character]);
 
   const toggleFavoriteCharacter = () => {
     if (isFavorite) {
@@ -41,8 +41,7 @@ const CharacterDisplay: FC<PropTypes> = ({ character }) => {
 
   useEffect(() => {
     checkCharacterIsFavorite();
-  }, [character, favorites]);
-
+  }, [checkCharacterIsFavorite]);
   return (
     <StyledLi>
       <StyledLink href={`/characters/${character.id}`}>

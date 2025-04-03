@@ -3,7 +3,7 @@
 import { fetchMarvelData } from "@/api/request";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import { Character } from "@/types/character";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import * as media from "../../theme/media-queries";
 import Spinner from "@/components/Spinner/Spinner";
@@ -16,7 +16,7 @@ function Characters() {
   const [loading, setLoading] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const loadCharacters = async (nameStartsWith = "") => {
+  const loadCharacters = useCallback(async (nameStartsWith = "") => {
     setLoading(true);
     await getCharacters(nameStartsWith)
       .then((data) => {
@@ -26,7 +26,8 @@ function Characters() {
       .finally(() => {
         setLoading(false);
       });
-  };
+  }, []);
+
   const getCharacters = async (characterName: string) => {
     const data = await fetchMarvelData("/characters", characterName);
 
@@ -42,7 +43,7 @@ function Characters() {
 
   useEffect(() => {
     loadCharacters();
-  }, []);
+  }, [loadCharacters]);
 
   if (!isMounted) return null; // Renderiza solo en el cliente
 

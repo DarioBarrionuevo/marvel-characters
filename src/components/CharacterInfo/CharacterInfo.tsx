@@ -1,5 +1,5 @@
 "use client";
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import Text from "../Text/Text";
 import { Character } from "@/types/character";
 import styled from "styled-components";
@@ -24,11 +24,11 @@ const CharacterInfo: FC<PropTypes> = ({ character }) => {
 
   const { favorites, addFavorite, removeFavorite } = favoritesContext;
 
-  const checkCharacterIsFavorite = () => {
+  const checkCharacterIsFavorite = useCallback(() => {
     setIsFavorite(
       favorites.some((favCharacter) => favCharacter.id === character.id)
     );
-  };
+  }, [favorites, character]);
 
   const toggleFavoriteCharacter = () => {
     if (isFavorite) {
@@ -41,7 +41,7 @@ const CharacterInfo: FC<PropTypes> = ({ character }) => {
 
   useEffect(() => {
     checkCharacterIsFavorite();
-  }, [character, favorites]);
+  }, [checkCharacterIsFavorite]);
 
   return (
     <StyledHeader>

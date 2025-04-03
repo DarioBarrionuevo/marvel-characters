@@ -1,5 +1,11 @@
 "use client";
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { FavoritesContextType } from "./types";
 import { Character } from "@/types/character";
 
@@ -7,9 +13,18 @@ export const FavoritesContext = createContext<FavoritesContextType | undefined>(
   undefined
 );
 
-export const useFavorites = () => useContext(FavoritesContext);
+export const useFavorites = () => {
+  const context = useContext(FavoritesContext);
+  if (!context) {
+    throw new Error("Context not working");
+  }
+  return context;
+};
 
-export const FavoritesProvider = ({ children }: any) => {
+interface FavoritesProviderProps {
+  children: ReactNode;
+}
+export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
   const [favorites, setFavorites] = useState<Character[]>([]);
 
   useEffect(() => {

@@ -39,6 +39,7 @@ const Container = styled.div`
     width: 2px;
     height: 8px;
     background-color: var(--colors-light-gray);
+    cursor: pointer;
   }
   ::-webkit-scrollbar-thumb {
     background-color: var(--colors-marvel-red);
