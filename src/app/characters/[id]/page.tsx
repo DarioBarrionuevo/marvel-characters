@@ -1,6 +1,7 @@
 "use client";
 import { fetchMarvelData } from "@/api/request";
 import CharacterInfo from "@/components/CharacterInfo/CharacterInfo";
+import Comics from "@/components/Comics/Comics";
 import Spinner from "@/components/Spinner/Spinner";
 import { Character } from "@/types/character";
 import { Comic } from "@/types/comic";
@@ -14,6 +15,7 @@ const CharacterPage = () => {
   const [characterData, setCharacterData] = useState<Character>();
   const [comics, setComics] = useState<Comic[]>([]);
   const [loading, setLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const getCharacterData = async (pCharacterId: number) => {
     const data = await fetchMarvelData(`/characters/${pCharacterId}`);
@@ -41,15 +43,22 @@ const CharacterPage = () => {
   };
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
     loadCharacterData(characterId);
     loadComics(characterId);
   }, [id]);
+
+  if (!isMounted) return null; // Renderiza solo en el cliente
+
   return (
     <Container>
       {!!characterData && !loading ? (
         <>
           <CharacterInfo character={characterData} />
-          {/* // <ComicsList comics={comics} /> */}
+          <Comics comics={comics} />
         </>
       ) : (
         <SpinnerContainer>
