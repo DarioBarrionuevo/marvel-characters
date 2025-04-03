@@ -35,18 +35,26 @@ function FavoritesPage() {
   return (
     <Container>
       <CustomText level="h2">FAVORITES</CustomText>
-      <SearchBar
-        loading={false}
-        value={characterName}
-        onChange={handleSearch}
-        count={filteredCharacters.length}
-      />
+      {favorites.length === 0 ? (
+        <CustomText level="p1">
+          There are no favorite heroes, please select one on the main page.
+        </CustomText>
+      ) : (
+        <>
+          <SearchBar
+            loading={false}
+            value={characterName}
+            onChange={handleSearch}
+            count={filteredCharacters.length}
+          />
 
-      <StyledGrid>
-        {filteredCharacters.map((character: Character) => (
-          <CharacterDisplay key={character.id} character={character} />
-        ))}
-      </StyledGrid>
+          <StyledGrid>
+            {filteredCharacters.map((character: Character) => (
+              <CharacterDisplay key={character.id} character={character} />
+            ))}
+          </StyledGrid>
+        </>
+      )}
     </Container>
   );
 }
