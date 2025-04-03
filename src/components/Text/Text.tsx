@@ -1,6 +1,6 @@
 "use client";
 
-import typography from "@/theme/typography";
+import typographyStyles from "../../theme/typography";
 import { FC, PropsWithChildren } from "react";
 import styled from "styled-components";
 
@@ -11,7 +11,7 @@ export interface PropTypes {
 const StyledText = styled.p.withConfig({
   shouldForwardProp: (prop) => !["level"].includes(prop),
 })<PropTypes>`
-  ${({ level }) => typography[level]};
+  ${({ level }) => typographyStyles[level]};
 `;
 const Text: FC<PropsWithChildren<PropTypes>> = ({
   level,
