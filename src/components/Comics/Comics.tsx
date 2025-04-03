@@ -33,15 +33,16 @@ const StyledSection = styled.section`
 `;
 
 const Container = styled.div`
-  width: 1000%;
+  width: 100%;
 
   ::-webkit-scrollbar {
     width: 2px;
-    height: 4px;
+    height: 8px;
     background-color: var(--colors-light-gray);
   }
   ::-webkit-scrollbar-thumb {
     background-color: var(--colors-marvel-red);
+    cursor: pointer;
   }
 
   ${media.gteMediumMedia} {
