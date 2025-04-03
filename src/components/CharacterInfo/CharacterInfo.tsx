@@ -1,3 +1,4 @@
+"use client";
 import { FC, useEffect, useState } from "react";
 import Text from "../Text/Text";
 import { Character } from "@/types/character";
