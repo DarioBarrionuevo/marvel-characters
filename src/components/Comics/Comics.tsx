@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Text from "../Text/Text";
 import { FC } from "react";
 import typographyStyles from "@/theme/typography";
+import ComicInfo from "../ComicInfo/ComicInfo";
 
 export interface PropTypes {
   comics: Comic[];
@@ -13,11 +14,9 @@ const Comics: FC<PropTypes> = ({ comics }) => {
     <StyledSection>
       <Container>
         <StyledHeading level="h2">Comics</StyledHeading>
-
         <List>
           {comics.map((comic: Comic) => (
-            <p key={comic.id}>{comic.id}</p>
-            // <ComicCard comic={comic} />
+            <ComicInfo key={comic.id} comic={comic} />
           ))}
         </List>
       </Container>
@@ -34,7 +33,7 @@ const StyledSection = styled.section`
 `;
 
 const Container = styled.div`
-  width: 100%;
+  width: 1000%;
 
   ::-webkit-scrollbar {
     width: 2px;
