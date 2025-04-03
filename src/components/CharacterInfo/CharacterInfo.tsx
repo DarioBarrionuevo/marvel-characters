@@ -50,7 +50,6 @@ const CharacterInfo: FC<PropTypes> = ({ character }) => {
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
         />
-
         <Resume>
           <Wrapper>
             <StyledHeading level="h1">{character.name}</StyledHeading>
@@ -76,10 +75,11 @@ export default CharacterInfo;
 
 const StyledHeader = styled.header`
   display: flex;
-  width: 100%;
+  width: 80%;
   position: relative;
   overflow: hidden;
   background-color: var(--colors-black);
+  margin: 0 auto;
 
   ${media.gteMediumMedia} {
     justify-content: center;
