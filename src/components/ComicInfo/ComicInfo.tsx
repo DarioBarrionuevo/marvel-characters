@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Comic } from "@/types/comic";
+import { Comic } from "../../types/comic";
 import styled from "styled-components";
 import * as media from "../../theme/media-queries";
 import Text from "../Text/Text";
