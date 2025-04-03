@@ -1,5 +1,6 @@
 "use client";
 import { fetchMarvelData } from "@/api/request";
+import CharacterInfo from "@/components/CharacterInfo/CharacterInfo";
 import Spinner from "@/components/Spinner/Spinner";
 import { Character } from "@/types/character";
 import { Comic } from "@/types/comic";
@@ -16,7 +17,6 @@ const CharacterPage = () => {
 
   const getCharacterData = async (pCharacterId: number) => {
     const data = await fetchMarvelData(`/characters/${pCharacterId}`);
-    console.log("🚀 ~ getCharacterData ~ data:", data);
     return data?.data?.results[0];
   };
 
@@ -48,7 +48,8 @@ const CharacterPage = () => {
     <Container>
       {!!characterData && !loading ? (
         <>
-          <p>{id}</p>
+          <CharacterInfo character={characterData} />
+          {/* // <ComicsList comics={comics} /> */}
         </>
       ) : (
         <SpinnerContainer>

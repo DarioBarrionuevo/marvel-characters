@@ -19,7 +19,7 @@ const CharacterDisplay: FC<PropTypes> = ({ character }) => {
   const favoritesContext = useFavorites();
 
   if (!favoritesContext) {
-    throw new Error("useLogic must be used within a FavoritesProvider");
+    throw new Error("Context not working");
   }
 
   const { favorites, addFavorite, removeFavorite } = favoritesContext;
