@@ -20,8 +20,11 @@ export const SearchInput: FC<PropTypes> = ({ value, onChange, ...props }) => {
   }, [value]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(event.target.value);
-    setInputValue(event.target.value);
+    const newValue = event.target.value;
+    if (newValue !== inputValue) {
+      onChange?.(newValue);
+      setInputValue(newValue);
+    }
   };
   return (
     <InputWrapper {...props}>
