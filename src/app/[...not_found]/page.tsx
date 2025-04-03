@@ -5,11 +5,11 @@ import Link from "next/link";
 const NotFound = () => {
   return (
     <Container>
-      <Title>¡Vaya! Página no encontrada</Title>
-      <Message>¡Parece que no puedes encontrar a tu héroe! 🦸‍♂️</Message>
+      <Title>Wow! Page not found</Title>
+      <Message>You can`t seem to find your hero! 🦸‍♂️</Message>
 
       <Redirect>
-        Vuelve a la <StyledLink href="/">página principal</StyledLink>
+        Back to <StyledLink href="/">main page</StyledLink>
       </Redirect>
     </Container>
   );
