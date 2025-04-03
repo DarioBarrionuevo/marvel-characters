@@ -3,7 +3,7 @@ import { Comic } from "@/types/comic";
 import styled from "styled-components";
 import * as media from "../../theme/media-queries";
 import Text from "../Text/Text";
-import { weight } from "@/theme/typography";
+import { weight } from "../../theme/typography";
 
 export interface PropTypes {
   comic: Comic;

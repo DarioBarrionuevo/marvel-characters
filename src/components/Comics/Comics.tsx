@@ -3,7 +3,7 @@ import * as media from "../../theme/media-queries";
 import styled from "styled-components";
 import Text from "../Text/Text";
 import { FC } from "react";
-import typographyStyles from "@/theme/typography";
+import typographyStyles from "../../theme/typography";
 import ComicInfo from "../ComicInfo/ComicInfo";
 
 export interface PropTypes {
