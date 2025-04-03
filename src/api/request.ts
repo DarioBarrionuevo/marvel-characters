@@ -17,7 +17,7 @@ if (!publicKey || !privateKey) {
 // Función que realiza la llamada a la API
 export const fetchMarvelData = async (
   endpoint: string,
-  characterName: string
+  characterName?: string
 ) => {
   const timestamp = new Date().getTime();
   const hash = md5(timestamp + privateKey + publicKey);
