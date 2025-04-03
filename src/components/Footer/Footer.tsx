@@ -9,7 +9,7 @@ const FooterWrapper = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70px;
+  height: 40px;
   font-size: 14px;
   font-family: Arial, sans-serif;
 
